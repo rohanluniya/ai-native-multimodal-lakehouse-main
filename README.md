@@ -80,7 +80,7 @@ Open **`http://localhost:8020`** in your browser.
 ### Option 2 — Zero-Docker Portable Script (macOS / Linux with Python 3.12+ or `uv`)
 
 ```bash
-git clone https://github.com/luniyarohan/ai-native-multimodal-lakehouse.git
+git clone https://github.com/rohanluniya/ai-native-multimodal-lakehouse-main.git ai-native-multimodal-lakehouse
 cd ai-native-multimodal-lakehouse
 ./scripts/run_portable.sh local
 ```
