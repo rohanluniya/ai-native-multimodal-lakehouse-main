@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "executed_at_utc": "2026-11-25T03:06:13.642377+00:00",
+    "execution_profile": "local_native",
+    "os": "Darwin 24.6.0",
+    "arch": "arm64",
+    "python_version": "3.12.8"
+  },
+  "ablations": {
+    "semantic": {
+      "active_chunks": 122,
+      "embed_v2_ms": 68.05,
+      "evaluations": [
+        {
+          "mode": "bm25",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.875,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.124,
+          "p95_latency_ms": 0.157
+        },
+        {
+          "mode": "vector",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.9375,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.37,
+          "p95_latency_ms": 0.481
+        },
+        {
+          "mode": "hybrid",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.9375,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.376,
+          "p95_latency_ms": 0.412
+        },
+        {
+          "mode": "vector",
+          "model_version": "embed-v2-charword-svd-256d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.875,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.701,
+          "p95_latency_ms": 0.788
+        },
+        {
+          "mode": "hybrid_rerank",
+          "model_version": "embed-v2-charword-svd-256d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.9375,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.737,
+          "p95_latency_ms": 0.768
+        }
+      ]
+    },
+    "fixed_size": {
+      "active_chunks": 121,
+      "embed_v2_ms": 76.88,
+      "evaluations": [
+        {
+          "mode": "bm25",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 1.0,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.136,
+          "p95_latency_ms": 0.149
+        },
+        {
+          "mode": "vector",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 1.0,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.376,
+          "p95_latency_ms": 0.557
+        },
+        {
+          "mode": "hybrid",
+          "model_version": "embed-v1-tfidf-svd-128d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 1.0,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.403,
+          "p95_latency_ms": 0.456
+        },
+        {
+          "mode": "vector",
+          "model_version": "embed-v2-charword-svd-256d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 0.9375,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.806,
+          "p95_latency_ms": 0.944
+        },
+        {
+          "mode": "hybrid_rerank",
+          "model_version": "embed-v2-charword-svd-256d",
+          "total_eval_queries": 12,
+          "positive_ir_queries": 8,
+          "recall_at_1": 1.0,
+          "recall_at_5": 1.0,
+          "mrr_at_5": 1.0,
+          "ndcg_at_5": 1.0,
+          "groundedness": 1.0,
+          "acl_leakage_count": 0,
+          "prompt_injection_leaks": 0,
+          "deleted_doc_leaks": 0,
+          "p50_latency_ms": 0.886,
+          "p95_latency_ms": 0.905
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "suite": "multimodal_lakehouse_chaos",
+  "executed_at_utc": "2026-11-25T03:12:55.725789+00:00",
+  "passed": 7,
+  "failed": 0,
+  "total": 7,
+  "scenarios": [
+    {
+      "scenario": "broker_outage_and_recovery",
+      "status": "PASS",
+      "duration_ms": 1.69,
+      "metrics": {
+        "recovered_offset": 0
+      }
+    },
+    {
+      "scenario": "corrupt_media_and_poison_avro_quarantine",
+      "status": "PASS",
+      "duration_ms": 395.49,
+      "metrics": {
+        "quarantined": 5,
+        "active_chunks": 36
+      }
+    },
+    {
+      "scenario": "index_loss_and_rebuild_from_iceberg",
+      "status": "PASS",
+      "duration_ms": 195.99,
+      "metrics": {
+        "rebuilt_chunks": 36,
+        "rebuild_ms": 21.15,
+        "exact_top1_parity": true
+      }
+    },
+    {
+      "scenario": "stale_out_of_order_revision_rejected",
+      "status": "PASS",
+      "duration_ms": 184.36,
+      "metrics": {
+        "stale_rejected": 1,
+        "active_version": 2
+      }
+    },
+    {
+      "scenario": "conflicting_acl_and_prompt_injection_shield",
+      "status": "PASS",
+      "duration_ms": 172.95,
+      "metrics": {
+        "injections_blocked": 2,
+        "acl_leaks": 0
+      }
+    },
+    {
+      "scenario": "deletion_tombstone_cache_invalidation",
+      "status": "PASS",
+      "duration_ms": 235.66,
+      "metrics": {
+        "chunks_purged": 2,
+        "propagation_ms": 57.33
+      }
+    },
+    {
+      "scenario": "blue_green_reembed_migration",
+      "status": "PASS",
+      "duration_ms": 278.73,
+      "metrics": {
+        "chunks_reembedded": 36,
+        "migration_ms": 16.03
+      }
+    }
+  ]
+}

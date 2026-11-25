@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "executed_at_utc": "2026-11-25T03:06:13.642377+00:00",
+    "execution_profile": "local_native",
+    "os": "Darwin 24.6.0",
+    "arch": "arm64",
+    "python_version": "3.12.8"
+  },
+  "profiles": [
+    {
+      "profile": "smoke",
+      "source_records": 33,
+      "binary_bytes_generated": 101960,
+      "active_chunks": 36,
+      "quarantined_dlq": 5,
+      "ingest_parse_index_s": 0.1331,
+      "embed_v1_build_ms": 5.37,
+      "reembed_v2_ms": 16.3,
+      "query_p50_ms": 0.345,
+      "query_p95_ms": 0.384,
+      "query_p99_ms": 0.396,
+      "dq_passed": 10,
+      "dq_total": 10,
+      "peak_rss_mb": 345.09
+    },
+    {
+      "profile": "local",
+      "source_records": 88,
+      "binary_bytes_generated": 363181,
+      "active_chunks": 122,
+      "quarantined_dlq": 7,
+      "ingest_parse_index_s": 0.2079,
+      "embed_v1_build_ms": 8.56,
+      "reembed_v2_ms": 67.01,
+      "query_p50_ms": 0.756,
+      "query_p95_ms": 1.023,
+      "query_p99_ms": 1.194,
+      "dq_passed": 10,
+      "dq_total": 10,
+      "peak_rss_mb": 412.28
+    },
+    {
+      "profile": "stress",
+      "source_records": 372,
+      "binary_bytes_generated": 1799795,
+      "active_chunks": 590,
+      "quarantined_dlq": 14,
+      "ingest_parse_index_s": 0.6753,
+      "embed_v1_build_ms": 25.63,
+      "reembed_v2_ms": 389.12,
+      "query_p50_ms": 1.785,
+      "query_p95_ms": 2.131,
+      "query_p99_ms": 2.79,
+      "dq_passed": 10,
+      "dq_total": 10,
+      "peak_rss_mb": 495.23
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+name: CI · Lint, Typecheck, Property Tests, E2E, Chaos & SBOM
+
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with: { version: "0.9.5" }
+      - run: uv python install 3.12
+      - run: uv sync --frozen --extra dev
+      - run: uv run ruff check .
+      - run: uv run mypy multimodal_lakehouse apps/rag-api/security.py
+      - run: uv run python scripts/check_licenses.py
+      - run: uv run pytest -v
+      - run: uv run python scripts/generate_sbom.py

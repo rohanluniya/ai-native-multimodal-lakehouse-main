@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "DlqEvent",
+  "namespace": "io.multimodal.lakehouse.events",
+  "fields": [
+    {"name": "dlq_id", "type": "string"},
+    {"name": "source_topic", "type": "string"},
+    {"name": "document_id", "type": ["null", "string"], "default": null},
+    {"name": "error_code", "type": "string"},
+    {"name": "error_message", "type": "string"},
+    {"name": "quarantined_at", "type": "string"},
+    {"name": "raw_payload_b64", "type": "string"},
+    {"name": "trace_id", "type": "string"},
+    {"name": "schema_version", "type": "string"}
+  ]
+}

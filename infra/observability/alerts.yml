@@ -1,0 +1,24 @@
+groups:
+  - name: multimodal_rag_governance_alerts
+    rules:
+      - alert: MultimodalQuarantineSpike
+        expr: increase(multimodal_quarantined_assets_total[15m]) > 20
+        for: 2m
+        labels: { severity: warning }
+        annotations:
+          summary: "Spike in corrupt media or schema-invalid multimodal assets quarantined"
+          runbook: "docs/reliability.md#quarantine-triage"
+      - alert: MultimodalDataQualityFailure
+        expr: increase(multimodal_dq_checks_total{status="FAIL"}[15m]) > 0
+        for: 0m
+        labels: { severity: critical }
+        annotations:
+          summary: "Multimodal governance/PII/deletion DQ check failed"
+          runbook: "docs/reliability.md#dq-failure"
+      - alert: MultimodalRetrievalLatencyHigh
+        expr: histogram_quantile(0.95, rate(multimodal_retrieval_latency_seconds_bucket[5m])) > 0.1
+        for: 3m
+        labels: { severity: warning }
+        annotations:
+          summary: "Hybrid ACL-filtered retrieval p95 latency exceeded 100ms SLO"
+          runbook: "docs/reliability.md#retrieval-latency-slo"

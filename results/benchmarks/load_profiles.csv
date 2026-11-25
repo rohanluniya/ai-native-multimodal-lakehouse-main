@@ -1,0 +1,4 @@
+profile,source_records,binary_bytes_generated,active_chunks,quarantined_dlq,ingest_parse_index_s,embed_v1_build_ms,reembed_v2_ms,query_p50_ms,query_p95_ms,query_p99_ms,dq_passed,dq_total,peak_rss_mb
+smoke,33,101960,36,5,0.1331,5.37,16.3,0.345,0.384,0.396,10,10,345.09
+local,88,363181,122,7,0.2079,8.56,67.01,0.756,1.023,1.194,10,10,412.28
+stress,372,1799795,590,14,0.6753,25.63,389.12,1.785,2.131,2.79,10,10,495.23

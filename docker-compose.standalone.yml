@@ -1,0 +1,26 @@
+services:
+  multimodal-lakehouse:
+    build:
+      context: .
+      dockerfile: infra/docker/Dockerfile.standalone
+    container_name: ai-native-multimodal-lakehouse-standalone
+    ports:
+      - "${LAKEHOUSE_API_PORT:-8020}:8020"
+    environment:
+      LAKEHOUSE_SIM_PROFILE: ${LAKEHOUSE_SIM_PROFILE:-local}
+      RAG_ADMIN_TOKEN: ${RAG_ADMIN_TOKEN:-dev-rag-admin-token}
+      RAG_ENG_LEAD_TOKEN: ${RAG_ENG_LEAD_TOKEN:-dev-rag-eng-token}
+      RAG_FINANCE_TOKEN: ${RAG_FINANCE_TOKEN:-dev-rag-finance-token}
+      RAG_PUBLIC_TOKEN: ${RAG_PUBLIC_TOKEN:-dev-rag-public-token}
+    volumes:
+      - multimodal_standalone_data:/app/.local_data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8020/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  multimodal_standalone_data:

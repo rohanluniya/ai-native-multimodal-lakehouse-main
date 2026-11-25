@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "executed_at_utc": "2026-11-25T03:06:13.642377+00:00",
+    "execution_profile": "local_native",
+    "os": "Darwin 24.6.0",
+    "arch": "arm64",
+    "python_version": "3.12.8"
+  },
+  "compaction": {
+    "files_before": 6,
+    "files_after": 1,
+    "bytes_before": 185706,
+    "bytes_after": 47098,
+    "storage_reduction_pct": 74.64,
+    "scan_before_ms": 15.09,
+    "scan_after_ms": 10.89,
+    "compaction_ms": 29.2,
+    "records_preserved": 2070
+  }
+}

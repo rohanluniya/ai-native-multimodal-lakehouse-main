@@ -1,0 +1,31 @@
+{
+  "type": "record",
+  "name": "SourceAssetEvent",
+  "namespace": "io.multimodal.lakehouse.events",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "event_type", "type": "string"},
+    {"name": "event_time", "type": "string"},
+    {"name": "ingestion_time", "type": "string"},
+    {"name": "schema_version", "type": "string"},
+    {"name": "document_id", "type": "string"},
+    {"name": "version_num", "type": "int"},
+    {"name": "source_connector", "type": "string"},
+    {"name": "source_uri", "type": "string"},
+    {"name": "modality", "type": "string"},
+    {"name": "mime_type", "type": "string"},
+    {"name": "content_sha256", "type": "string"},
+    {"name": "byte_size", "type": "long"},
+    {"name": "title", "type": "string"},
+    {"name": "language_hint", "type": ["null", "string"], "default": null},
+    {"name": "security_tier", "type": "string"},
+    {"name": "acl_allow_groups", "type": {"type": "array", "items": "string"}},
+    {"name": "acl_deny_groups", "type": {"type": "array", "items": "string"}},
+    {"name": "payload_path", "type": ["null", "string"], "default": null},
+    {"name": "metadata_json", "type": "string"},
+    {"name": "trace_id", "type": "string"},
+    {"name": "correlation_id", "type": "string"},
+    {"name": "retention_policy_days", "type": ["null", "int"], "default": null},
+    {"name": "data_owner_team", "type": ["null", "string"], "default": null}
+  ]
+}

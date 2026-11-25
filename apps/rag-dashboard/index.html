@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multimodal Lakehouse &amp; RAG Governance Console</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="banner">
+    <span>AI-NATIVE MULTIMODAL DATA LAKEHOUSE · Governed PDF, Image OCR, Audio, Markdown &amp; Structured Corpus · Zero-Download Self-Hosted Embeddings · Strict Pre-Retrieval ACL Enforcement</span>
+    <span class="pill pill-info" id="model-pill">EMBED-V2 ACTIVE</span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-box">RAG</div>
+      <div>
+        <h1>Multimodal Lakehouse &amp; RAG Control Tower</h1>
+        <p class="sub">Chunk Lineage · ACL Pre-Filtering · Hybrid BM25 + Vector RRF · Re-Embedding &amp; GDPR Tombstone Propagation</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="health-box">
+        <span class="dot live"></span>
+        <div>
+          <div class="health-title" id="health-status">HEALTHY</div>
+          <div class="health-ts" id="freshness-ts">Syncing...</div>
+        </div>
+      </div>
+      <button id="refresh-btn" class="btn-primary" type="button">Refresh</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KPI Strip -->
+    <section class="kpi-grid">
+      <article class="kpi-card">
+        <div class="kpi-label">Active Multimodal Docs</div>
+        <div class="kpi-val" id="kpi-docs">--</div>
+        <div class="kpi-sub" id="kpi-versions">-- SCD2 versions</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">Indexed Active Chunks</div>
+        <div class="kpi-val accent-teal" id="kpi-chunks">--</div>
+        <div class="kpi-sub" id="kpi-model">--</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">Hybrid Recall@5 / MRR</div>
+        <div class="kpi-val accent-green" id="kpi-recall">--</div>
+        <div class="kpi-sub" id="kpi-eval-lat">p95 retrieval -- ms</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">ACL &amp; Injection Leaks</div>
+        <div class="kpi-val accent-green" id="kpi-leaks">0 / 0</div>
+        <div class="kpi-sub">Pre-retrieval filter verified</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">Quarantined Corrupt/DLQ</div>
+        <div class="kpi-val accent-amber" id="kpi-quarantine">--</div>
+        <div class="kpi-sub">Isolated in bronze.quarantine_dlq</div>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-label">Deletion Tombstones</div>
+        <div class="kpi-val accent-blue" id="kpi-tombstones">--</div>
+        <div class="kpi-sub">Iceberg + Index + Cache purged</div>
+      </article>
+    </section>
+
+    <!-- Live Permission-Aware Hybrid RAG Query Playground -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>Live Permission-Aware Hybrid RAG Playground <span class="badge">ACL Pre-Filter → BM25 + Vector RRF → Cited Answer</span></h2>
+          <p class="desc">Switch access personas to observe strict pre-retrieval ACL enforcement (deny-overrides-allow) and prompt-injection shielding live.</p>
+        </div>
+      </div>
+      <div class="query-bar">
+        <input id="query-input" type="text" value="Q4 enterprise revenue forecast Iceberg compaction and Hybrid BM25 Qdrant" placeholder="Ask across PDFs, images, audio transcripts, and multilingual docs..." />
+        <select id="persona-select">
+          <option value="public_user">Persona: Public User (public)</option>
+          <option value="eng_lead">Persona: Engineering Lead (internal, denied HR)</option>
+          <option value="finance_analyst" selected>Persona: Finance Analyst (confidential)</option>
+          <option value="admin">Persona: Admin (restricted clearance)</option>
+        </select>
+        <select id="mode-select">
+          <option value="hybrid_rerank" selected>Hybrid RRF + Rerank (v2)</option>
+          <option value="hybrid">Hybrid RRF (BM25 + Vec)</option>
+          <option value="vector">Vector Only</option>
+          <option value="bm25">BM25 Lexical Only</option>
+        </select>
+        <button id="run-query-btn" class="btn-primary" type="button">Run ACL Query</button>
+      </div>
+      <div id="query-meta" class="query-meta"></div>
+      <div id="grounded-answer" class="answer-box"></div>
+      <div id="query-hits" class="hits-list"></div>
+    </section>
+
+    <!-- Corpus Modalities + Reproducible RAG Evaluation Table -->
+    <section class="two-col">
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Multimodal Corpus &amp; Security Distribution <span class="badge">Iceberg V2 Gold</span></h2>
+            <p class="desc">Active non-deleted chunks by binary modality (PDF, Image OCR, Audio WAV, Markdown, JSON) with PII redaction counts.</p>
+          </div>
+        </div>
+        <div id="modality-bars" class="bars-list"></div>
+        <div class="mini-grid" id="tier-lang-grid"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Reproducible RAG Evaluation &amp; Re-Embedding Models <span class="badge">12 Labeled Fixtures</span></h2>
+            <p class="desc">Empirical comparison across BM25, Vector v1 (128d), Hybrid RRF, and Blue/Green Re-Embedded Vector v2 (256d).</p>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table" id="eval-table">
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Model Version</th>
+                <th>R@1</th>
+                <th>R@5</th>
+                <th>MRR</th>
+                <th>nDCG</th>
+                <th>Ground.</th>
+                <th>Leaks</th>
+                <th>p95 ms</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="model-registry-cards" class="model-grid"></div>
+      </article>
+    </section>
+
+    <!-- Document Provenance SCD2 Table + Governance / DQ / Quarantine / Tombstones -->
+    <section class="two-col">
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Document Revision &amp; ACL Provenance (SCD Type 2) <span class="badge">silver.document_versions_scd2</span></h2>
+            <p class="desc">Click any document row to inspect full version → parent → chunk lineage and SHA-256 hashes.</p>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table" id="docs-table">
+            <thead>
+              <tr>
+                <th>Doc ID</th>
+                <th>Ver</th>
+                <th>Modality</th>
+                <th>Lang</th>
+                <th>Tier</th>
+                <th>PII</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="lineage-drawer" class="lineage-drawer"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Governance, Data Quality, Quarantine &amp; Tombstones</h2>
+            <p class="desc">Automated 10-check invariant suite, corrupt media quarantine ledger, and GDPR erasure SLA log.</p>
+          </div>
+          <span id="dq-badge" class="pill pill-pass">--</span>
+        </div>
+        <div id="dq-list" class="dq-list"></div>
+        <h3 class="subhead">Quarantined Corrupt Media &amp; Poison Avro (`bronze.quarantine_dlq`)</h3>
+        <div class="table-scroll">
+          <table class="data-table compact" id="quarantine-table">
+            <thead>
+              <tr><th>Document</th><th>Error Code</th><th>Details</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <h3 class="subhead">Deletion Tombstone Propagation (`silver.deletion_tombstones`)</h3>
+        <div class="table-scroll">
+          <table class="data-table compact" id="tombstone-table">
+            <thead>
+              <tr><th>Document</th><th>Reason</th><th>Purged</th><th>Latency</th><th>SLA</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>AI-Native Multimodal Data Lakehouse &amp; RAG Platform · Apache Iceberg V2 · Kafka · Qdrant · OpenSearch · DuckDB · FastAPI</span>
+    <span id="footer-stats">OpenLineage Events: --</span>
+  </footer>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
