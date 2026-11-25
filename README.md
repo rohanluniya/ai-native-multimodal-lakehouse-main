@@ -71,8 +71,7 @@ Backed by [`results/benchmarks/retrieval_ablations.json`](results/benchmarks/ret
 ### Option 1 — Single-Container Portable Docker (Recommended on Any OS with Docker)
 
 ```bash
-git clone https://github.com/ankdeshm/ai-native-multimodal-lakehouse.git
-cd ai-native-multimodal-lakehouse
+git clone https://github.com/rohanluniya/ai-native-multimodal-lakehouse-main.git ai-native-multimodal-lakehouse
 docker compose -f docker-compose.standalone.yml up --build
 ```
 
@@ -81,7 +80,7 @@ Open **`http://localhost:8020`** in your browser.
 ### Option 2 — Zero-Docker Portable Script (macOS / Linux with Python 3.12+ or `uv`)
 
 ```bash
-git clone https://github.com/ankdeshm/ai-native-multimodal-lakehouse.git
+git clone https://github.com/luniyarohan/ai-native-multimodal-lakehouse.git
 cd ai-native-multimodal-lakehouse
 ./scripts/run_portable.sh local
 ```
